@@ -745,8 +745,8 @@ footer {
     <span data-lang="fr">Première AI Visibility Agency de Belgique</span><span data-lang="en">Belgium's first AI Visibility Agency</span>
   </div>
   <h1>
-    <span data-lang="nl" class="active">Uw merk. <em>Het antwoord.</em></span>
-    <span data-lang="fr">Votre marque. <em>La réponse.</em></span><span data-lang="en">Your brand. <em>The answer.</em></span>
+    <span data-lang="nl" class="active">Is uw bedrijf vindbaar in <em>ChatGPT?</em></span>
+    <span data-lang="fr">Votre entreprise est-elle trouvable sur <em>ChatGPT ?</em></span><span data-lang="en">Is your business findable on <em>ChatGPT?</em></span>
   </h1>
   <p class="hero-sub">
     <span data-lang="nl" class="active">Steeds meer Belgen vragen ChatGPT, Gemini, Claude en Perplexity om aanbevelingen. Verschijnt jouw bedrijf in die antwoorden? Wij zorgen ervoor.</span>
@@ -1477,6 +1477,7 @@ footer {
       </select>
       <input type="text" name="name" required placeholder="Je naam">
       <input type="email" name="email" required placeholder="Je e-mailadres">
+      <input type="tel" name="phone" placeholder="Je telefoonnummer (optioneel)">
       <input type="text" name="website" required placeholder="Je website URL (bijv. www.jouwsite.be)">
       <button type="submit" id="auditBtn">
         <span data-lang="nl" class="active">Aanvraag versturen →</span>
@@ -1485,16 +1486,8 @@ footer {
     </form>
     <div id="formSuccess" style="display:none; max-width:440px; margin:0 auto; text-align:center;">
       <div style="width:64px;height:64px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.8rem;">✓</div>
-      <h3 style="font-family:var(--heading);font-size:1.5rem;font-weight:700;margin-bottom:0.8rem;color:#fff;">
-        <span data-lang="nl" class="active">Bedankt voor je aanvraag!</span>
-        <span data-lang="fr">Merci pour votre demande !</span>
-        <span data-lang="en">Thanks for your request!</span>
-      </h3>
-      <p style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.7;">
-        <span data-lang="nl" class="active">Je AI-Scan is onderweg. Binnen <strong style="color:#fff;">48 uur</strong> ontvang je een volledig rapport in je inbox.</span>
-        <span data-lang="fr">Votre Scan IA est en route. Vous recevrez un rapport complet dans <strong style="color:#fff;">48 heures</strong>.</span>
-        <span data-lang="en">Your AI Scan is on its way. You'll receive a full report within <strong style="color:#fff;">48 hours</strong>.</span>
-      </p>
+      <h3 id="successTitle" style="font-family:var(--heading);font-size:1.5rem;font-weight:700;margin-bottom:0.8rem;color:#fff;"></h3>
+      <p id="successMsg" style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.7;"></p>
     </div>
     <div class="audit-checklist">
       <div class="audit-check"><span class="ck">✓</span> <span data-lang="nl" class="active">Gratis</span><span data-lang="fr">Gratuit</span><span data-lang="en">Free</span></div>
@@ -1625,6 +1618,7 @@ function setLang(lang) {
     form.querySelector('input[name="name"]').placeholder = lang === 'nl' ? 'Je naam' : lang === 'fr' ? 'Votre nom' : 'Your name';
     form.querySelector('input[name="email"]').placeholder = lang === 'nl' ? 'Je e-mailadres' : lang === 'fr' ? 'Votre adresse e-mail' : 'Your email address';
     form.querySelector('input[name="website"]').placeholder = lang === 'nl' ? 'Je website URL (bijv. https://...)' : lang === 'fr' ? 'URL de votre site (ex. https://...)' : 'Your website URL (e.g. https://...)';
+    form.querySelector('input[name="phone"]').placeholder = lang === 'nl' ? 'Je telefoonnummer (optioneel)' : lang === 'fr' ? 'Votre numéro de téléphone (facultatif)' : 'Your phone number (optional)';
   }
 }
 
@@ -1661,8 +1655,33 @@ async function submitForm(e) {
   e.preventDefault();
   const form = document.getElementById('auditForm');
   const btn = document.getElementById('auditBtn');
+  const pakket = document.getElementById('pakketSelect').value;
   btn.textContent = '⏳ Verzenden...';
   btn.disabled = true;
+
+  // Determine active language
+  const lang = document.querySelector('.lang-buttons button.active')?.getAttribute('onclick')?.match(/'(\w+)'/)?.[1] || 'nl';
+
+  const messages = {
+    'Gratis AI-Scan': {
+      nl: { title: 'Bedankt voor je aanvraag!', msg: 'Je gratis AI-Scan is onderweg. Binnen <strong style="color:#fff;">48 uur</strong> ontvang je een volledig rapport in je inbox.' },
+      fr: { title: 'Merci pour votre demande !', msg: 'Votre Scan IA gratuit est en route. Vous recevrez un rapport complet dans <strong style="color:#fff;">48 heures</strong>.' },
+      en: { title: 'Thanks for your request!', msg: 'Your free AI Scan is on its way. You\'ll receive a full report within <strong style="color:#fff;">48 hours</strong>.' }
+    },
+    'Actieplan (€499)': {
+      nl: { title: 'Bedankt voor je interesse in het Actieplan!', msg: 'We nemen binnen <strong style="color:#fff;">24 uur</strong> contact met je op om alles te bespreken en je persoonlijk actieplan op te starten.' },
+      fr: { title: 'Merci pour votre intérêt pour le Plan d\'Action !', msg: 'Nous vous contacterons dans <strong style="color:#fff;">24 heures</strong> pour tout discuter et lancer votre plan d\'action personnalisé.' },
+      en: { title: 'Thanks for your interest in the Action Plan!', msg: 'We\'ll contact you within <strong style="color:#fff;">24 hours</strong> to discuss everything and start your personalised action plan.' }
+    },
+    'Monitoring (€249/maand)': {
+      nl: { title: 'Bedankt voor je interesse in Monitoring!', msg: 'We nemen binnen <strong style="color:#fff;">24 uur</strong> contact met je op om je maandelijkse AI-monitoring in te richten.' },
+      fr: { title: 'Merci pour votre intérêt pour le Monitoring !', msg: 'Nous vous contacterons dans <strong style="color:#fff;">24 heures</strong> pour mettre en place votre monitoring IA mensuel.' },
+      en: { title: 'Thanks for your interest in Monitoring!', msg: 'We\'ll contact you within <strong style="color:#fff;">24 hours</strong> to set up your monthly AI monitoring.' }
+    }
+  };
+
+  const msg = messages[pakket]?.[lang] || messages['Gratis AI-Scan']['nl'];
+
   try {
     const resp = await fetch('https://formspree.io/f/mykdvpkv', {
       method: 'POST',
@@ -1670,7 +1689,9 @@ async function submitForm(e) {
       headers: { 'Accept': 'application/json' }
     });
     form.style.display = 'none';
-    document.querySelector('.audit-success').style.display = 'block';
+    document.getElementById('successTitle').innerHTML = msg.title;
+    document.getElementById('successMsg').innerHTML = msg.msg;
+    document.querySelector('.audit-success, #formSuccess').style.display = 'block';
   } catch (err) {
     btn.textContent = '❌ Fout — probeer opnieuw';
     btn.disabled = false;
