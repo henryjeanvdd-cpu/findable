@@ -474,7 +474,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
 .pricing { padding: 5rem 2rem; }
 .pricing-inner { max-width: 960px; margin: 0 auto; text-align: center; }
 .pricing-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 3rem; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
 .price-card {
   background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem 2rem;
   text-align: left; position: relative; transition: all 0.3s;
@@ -1209,6 +1209,19 @@ footer {
         </ul>
         <a href="#audit" class="price-btn" onclick="selectPakket(2)">Start met monitoring</a>
       </div>
+      <div class="price-card" data-lang="nl">
+        <div class="price-name">Implementatie</div>
+        <div class="price-amount">Op maat</div>
+        <div class="price-desc">Wij voeren het actieplan voor u uit</div>
+        <ul class="price-features">
+          <li><span class="pf-icon">✓</span> Alles van Actieplan +</li>
+          <li><span class="pf-icon">✓</span> Wij schrijven uw content</li>
+          <li><span class="pf-icon">✓</span> Schema markup implementatie</li>
+          <li><span class="pf-icon">✓</span> Backlink outreach</li>
+          <li><span class="pf-icon">✓</span> Volledige ontzorging</li>
+        </ul>
+        <a href="#audit" class="price-btn" onclick="selectPakket(3)">Offerte aanvragen</a>
+      </div>
       <!-- FR -->
       <div class="price-card" data-lang="fr">
         <div class="price-name">Scan IA</div>
@@ -1252,6 +1265,19 @@ footer {
         </ul>
         <a href="#audit" class="price-btn" onclick="selectPakket(2)">Commencer le monitoring</a>
       </div>
+      <div class="price-card" data-lang="fr">
+        <div class="price-name">Implémentation</div>
+        <div class="price-amount">Sur mesure</div>
+        <div class="price-desc">Nous exécutons le plan d'action pour vous</div>
+        <ul class="price-features">
+          <li><span class="pf-icon">✓</span> Tout du Plan d'action +</li>
+          <li><span class="pf-icon">✓</span> Nous rédigeons votre contenu</li>
+          <li><span class="pf-icon">✓</span> Implémentation schema markup</li>
+          <li><span class="pf-icon">✓</span> Stratégie de backlinks</li>
+          <li><span class="pf-icon">✓</span> Prise en charge complète</li>
+        </ul>
+        <a href="#audit" class="price-btn" onclick="selectPakket(3)">Demander un devis</a>
+      </div>
       <div class="price-card" data-lang="en">
         <div class="price-name">AI Scan</div>
         <div class="price-amount">Free</div>
@@ -1293,6 +1319,19 @@ footer {
           <li><span class="pf-icon">✓</span> 30 min strategy call / month</li>
         </ul>
         <a href="#audit" class="price-btn" onclick="selectPakket(2)">Start monitoring</a>
+      </div>
+      <div class="price-card" data-lang="en">
+        <div class="price-name">Implementation</div>
+        <div class="price-amount">Custom</div>
+        <div class="price-desc">We execute the action plan for you</div>
+        <ul class="price-features">
+          <li><span class="pf-icon">✓</span> Everything from Action Plan +</li>
+          <li><span class="pf-icon">✓</span> We write your content</li>
+          <li><span class="pf-icon">✓</span> Schema markup implementation</li>
+          <li><span class="pf-icon">✓</span> Backlink outreach</li>
+          <li><span class="pf-icon">✓</span> Fully managed service</li>
+        </ul>
+        <a href="#audit" class="price-btn" onclick="selectPakket(3)">Request a quote</a>
       </div>
     </div>
   </div>
@@ -1474,6 +1513,7 @@ footer {
         <option value="Gratis AI-Scan">Gratis AI-Scan</option>
         <option value="Actieplan (€499)">Actieplan — €499</option>
         <option value="Monitoring (€249/maand)">Monitoring — €249/maand</option>
+        <option value="Implementatie (op maat)">Implementatie — Op maat</option>
       </select>
       <input type="text" name="name" required placeholder="Je naam">
       <input type="email" name="email" required placeholder="Je e-mailadres">
@@ -1677,6 +1717,11 @@ async function submitForm(e) {
       nl: { title: 'Bedankt voor je interesse in Monitoring!', msg: 'We nemen binnen <strong style="color:#fff;">24 uur</strong> contact met je op om je maandelijkse AI-monitoring in te richten.' },
       fr: { title: 'Merci pour votre intérêt pour le Monitoring !', msg: 'Nous vous contacterons dans <strong style="color:#fff;">24 heures</strong> pour mettre en place votre monitoring IA mensuel.' },
       en: { title: 'Thanks for your interest in Monitoring!', msg: 'We\'ll contact you within <strong style="color:#fff;">24 hours</strong> to set up your monthly AI monitoring.' }
+    },
+    'Implementatie (op maat)': {
+      nl: { title: 'Bedankt voor je interesse in Implementatie!', msg: 'We nemen binnen <strong style="color:#fff;">24 uur</strong> contact met je op voor een vrijblijvende offerte op maat.' },
+      fr: { title: 'Merci pour votre intérêt pour l\'Implémentation !', msg: 'Nous vous contacterons dans <strong style="color:#fff;">24 heures</strong> pour un devis personnalisé sans engagement.' },
+      en: { title: 'Thanks for your interest in Implementation!', msg: 'We\'ll contact you within <strong style="color:#fff;">24 hours</strong> with a custom quote tailored to your needs.' }
     }
   };
 
