@@ -428,12 +428,12 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
 
 .case-right { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
 .case-table-head {
-  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr; padding: 10px 12px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 16px; gap: 8px;
   background: rgba(255,255,255,0.06); font-size: 0.68rem; font-weight: 600;
   color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em;
 }
 .case-table-row {
-  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr; padding: 10px 12px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 10px 16px; gap: 8px;
   border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; align-items: center;
 }
 .case-table-row .name { font-weight: 500; word-break: break-word; }
@@ -654,6 +654,9 @@ footer {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ---- RESPONSIVE ---- */
+@media (max-width: 1100px) {
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
   .lang-bar { padding: 0 1rem; }
   nav { padding: 0 1.5rem; }
@@ -670,11 +673,14 @@ footer {
   .audit-form { flex-direction: column; }
   .case-grid { grid-template-columns: 1fr; gap: 2rem; }
   .case-score-row { flex-direction: row; gap: 0.8rem; }
+  .case-score-row { flex-wrap: wrap; }
+  .case-score { min-width: 0; flex: 1 1 45%; }
+  .case-score-num { font-size: 1.5rem; }
   .case-study { padding: 3rem 1rem; }
-  .case-right { overflow-x: auto; }
-  .case-table-head, .case-table-row { font-size: 0.68rem; padding: 8px 8px; min-width: 360px; }
-  .case-table-head { grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; }
-  .case-table-row { grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; }
+  .case-right { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .case-table-head, .case-table-row { font-size: 0.7rem; padding: 8px 10px; min-width: 420px; gap: 6px; }
+  .case-table-head { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; }
+  .case-table-row { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; }
   .case-insight { font-size: 0.78rem; padding: 1rem; }
   .about-values { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
