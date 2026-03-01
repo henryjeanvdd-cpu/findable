@@ -108,46 +108,98 @@
 }
 </script>
 
-<!-- Organization + LocalBusiness Schema -->
+<!-- Organization + LocalBusiness + ProfessionalService Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness"],
-  "name": "Findable",
+  "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+  "name": "FINDABLE",
+  "alternateName": "Findable",
+  "description": "FINDABLE is Belgie's eerste AI Visibility Agency. Wij helpen bedrijven zichtbaar worden in AI-zoekmachines zoals ChatGPT, Gemini en Perplexity via AEO-audits, actieplannen en monitoring.",
   "url": "https://findable.be",
-  "description": "België's eerste AI Visibility Agency. Wij maken uw merk het antwoord in ChatGPT, Gemini, Claude en Perplexity via AEO, GEO en AI-zichtbaarheidsoptimalisatie.",
+  "logo": "https://findable.be/logo.png",
+  "image": "https://findable.be/og-image.png",
   "email": "info@findable.be",
-  "areaServed": [
-    {"@type": "Country", "name": "Belgium"},
-    {"@type": "Country", "name": "Netherlands"},
-    {"@type": "Country", "name": "Luxembourg"}
-  ],
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Antwerpen",
+    "addressLocality": "Schilde",
+    "addressRegion": "Antwerpen",
+    "postalCode": "2970",
     "addressCountry": "BE"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.2194,
+    "longitude": 4.4025
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Belgium"
+  },
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Henry"
+  },
+  "knowsAbout": [
+    "AI Visibility",
+    "Answer Engine Optimization",
+    "Generative Engine Optimization",
+    "AEO",
+    "GEO",
+    "AI-zoekmachineoptimalisatie",
+    "Schema Markup",
+    "ChatGPT optimalisatie",
+    "Gemini optimalisatie",
+    "Perplexity optimalisatie"
+  ],
   "knowsLanguage": ["nl", "fr", "en"],
   "priceRange": "€€",
-  "serviceType": ["AI Visibility Audit", "Answer Engine Optimization", "Generative Engine Optimization", "AI Brand Monitoring"]
-}
-</script>
-
-<!-- Service Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "AI Visibility Audit",
-  "provider": {"@type": "Organization", "name": "Findable"},
-  "description": "Gratis AI-zichtbaarheidsscan op 4 AI-platforms (ChatGPT, Gemini, Claude, Perplexity). 50+ prompts getest met concurrentiebenchmark en actieplan.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR",
-    "description": "Gratis AI Visibility Audit binnen 48 uur"
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "FINDABLE Diensten",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Visibility Audit",
+          "description": "Gratis audit die meet hoe zichtbaar uw bedrijf is in ChatGPT, Gemini en Perplexity. 50+ prompts getest op 3 AI-platforms."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AEO Actieplan",
+          "description": "Volledig implementatieplan met schema markup advies, content gap analyse en prioriteiten roadmap.",
+          "offers": {
+            "@type": "Offer",
+            "price": "499",
+            "priceCurrency": "EUR"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Visibility Monitoring",
+          "description": "Maandelijkse hertesting, score-evolutie tracking, competitor monitoring en aanbevelingen.",
+          "offers": {
+            "@type": "Offer",
+            "price": "249",
+            "priceCurrency": "EUR",
+            "billingIncrement": "MON"
+          }
+        }
+      }
+    ]
   },
-  "areaServed": {"@type": "Country", "name": "Belgium"}
+  "sameAs": [
+    "https://www.linkedin.com/company/findable-be",
+    "https://www.instagram.com/findable.be"
+  ]
 }
 </script>
 
