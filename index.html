@@ -775,6 +775,7 @@ footer {
   <a href="#" class="nav-logo">Find<span>able</span></a>
   <div class="nav-links">
     <a href="/inzichten/"><span data-lang="nl" class="active">Inzichten</span><span data-lang="fr">Perspectives</span><span data-lang="en">Insights</span></a>
+    <a href="/benchmark/"><span data-lang="nl" class="active">Benchmark</span><span data-lang="fr">Benchmark</span><span data-lang="en">Benchmark</span></a>
     <a href="#case"><span data-lang="nl" class="active">Case Study</span><span data-lang="fr">Étude de cas</span><span data-lang="en">Case Study</span></a>
     <a href="#how"><span data-lang="nl" class="active">Hoe het werkt</span><span data-lang="fr">Comment ça marche</span><span data-lang="en">How it works</span></a>
     <a href="#pricing"><span data-lang="nl" class="active">Prijzen</span><span data-lang="fr">Tarifs</span><span data-lang="en">Pricing</span></a>
@@ -789,6 +790,7 @@ footer {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/inzichten/" onclick="closeMenu()"><span data-lang="nl" class="active">Inzichten</span><span data-lang="fr">Perspectives</span><span data-lang="en">Insights</span></a>
+  <a href="/benchmark/" onclick="closeMenu()"><span data-lang="nl" class="active">Benchmark</span><span data-lang="fr">Benchmark</span><span data-lang="en">Benchmark</span></a>
   <a href="#case" onclick="closeMenu()"><span data-lang="nl" class="active">Case Study</span><span data-lang="fr">Étude de cas</span><span data-lang="en">Case Study</span></a>
   <a href="#how" onclick="closeMenu()"><span data-lang="nl" class="active">Hoe het werkt</span><span data-lang="fr">Comment ça marche</span><span data-lang="en">How it works</span></a>
   <a href="#pricing" onclick="closeMenu()"><span data-lang="nl" class="active">Prijzen</span><span data-lang="fr">Tarifs</span><span data-lang="en">Pricing</span></a>
@@ -1675,10 +1677,10 @@ footer {
       <span data-lang="fr">Question ? Idée ? Simplement curieux ? Envoyez-nous un message.</span><span data-lang="en">Question? Idea? Just curious? Send us a message.</span>
     </p>
     <div class="contact-grid">
-      <a href="mailto:info@findable.be" class="contact-card">
+      <a href="/cdn-cgi/l/email-protection#f59c9b939ab5939c9b9194979990db9790" class="contact-card">
         <span class="contact-icon">✉️</span>
         <strong>E-mail</strong>
-        <span>info@findable.be</span>
+        <span><span class="__cf_email__" data-cfemail="87eee9e1e8c7e1eee9e3e6e5ebe2a9e5e2">[email&#160;protected]</span></span>
       </a>
       <div class="contact-card">
         <span class="contact-icon">📍</span>
@@ -1706,7 +1708,7 @@ footer {
   <div class="footer-copy">© 2026 Findable · findable.be · Belgium 🇧🇪 · <a href="/privacy" style="color:var(--muted);text-decoration:underline;">Privacyverklaring</a></div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function setLang(lang) {
   document.querySelectorAll('.lang-buttons button').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector(`.lang-buttons button[onclick="setLang('${lang}')"]`);
@@ -1796,13 +1798,4 @@ async function submitForm(e) {
     });
     form.style.display = 'none';
     document.getElementById('successTitle').innerHTML = msg.title;
-    document.getElementById('successMsg').innerHTML = msg.msg;
-    document.querySelector('.audit-success, #formSuccess').style.display = 'block';
-  } catch (err) {
-    btn.textContent = '❌ Fout — probeer opnieuw';
-    btn.disabled = false;
-  }
-}
-</script>
-</body>
-</html>
+    document.getElementById('successMsg
